@@ -3,10 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/phonebook/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2295" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/phonebook/app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.2315" />
         <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/phonebook/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.261" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/phonebook/app/src/main/res/drawable/ic_baseline_phone_24.xml" value="0.2455" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/phonebook/app/src/main/res/drawable/ic_baseline_phone_iphone_24.xml" value="0.2295" />
         <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/phonebook/app/src/main/res/drawable/ic_launcher_background.xml" value="0.261" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/phonebook/app/src/main/res/layout/activity_add_contact.xml" value="0.33" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/phonebook/app/src/main/res/layout/activity_add_contact_menu.xml" value="0.225" />
         <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/phonebook/app/src/main/res/layout/activity_main.xml" value="0.353713768115942" />
         <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/phonebook/app/src/main/res/layout/contact_item.xml" value="0.353713768115942" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/phonebook/app/src/main/res/menu/add_contact_menu.xml" value="0.225" />
       </map>
     </option>
   </component>

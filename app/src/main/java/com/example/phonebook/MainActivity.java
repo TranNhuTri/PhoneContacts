@@ -3,6 +3,7 @@ package com.example.phonebook;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,5 +52,13 @@ public class MainActivity extends AppCompatActivity {
         contactsAdapter = new ContactsAdapter(contacts);
         binding.rvContacts.setAdapter(contactsAdapter);
         binding.rvContacts.setLayoutManager(new LinearLayoutManager(this));
+
+        binding.addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AddContactActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
