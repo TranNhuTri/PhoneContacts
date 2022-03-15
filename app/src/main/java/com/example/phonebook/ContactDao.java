@@ -17,7 +17,7 @@ public interface ContactDao {
     List<Contact> loadAllByIds(int[] contactIds);
 
     @Query("SELECT * FROM contact WHERE name LIKE :name")
-    Contact findByName(String name);
+    List<Contact> findByName(String name);
 
     @Insert
     void insertAll(Contact... contacts);

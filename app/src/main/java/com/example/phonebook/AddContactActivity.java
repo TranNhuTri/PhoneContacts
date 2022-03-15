@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.phonebook.databinding.ActivityAddContactBinding;
 import com.example.phonebook.databinding.ActivityMainBinding;
@@ -50,10 +51,15 @@ public class AddContactActivity extends AppCompatActivity {
                 onBackPressed();
                 return true;
             case R.id.action_save:
-                String firstName = binding.firstName.getText().toString();
-                String lastName = binding.lastName.getText().toString();
+                String firstName = binding.firstName.getText().toString().trim();
+                String lastName = binding.lastName.getText().toString().trim();
                 String phone = binding.phone.getText().toString();
                 String email = binding.email.getText().toString();
+                if((lastName + firstName).equals("")) {
+                    Toast.makeText(this, "Name should not be empty", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+
                 Contact newContact = new Contact(lastName + firstName, phone, email);
 
                 AsyncTask.execute(new Runnable() {

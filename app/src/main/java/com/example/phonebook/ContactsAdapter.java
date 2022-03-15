@@ -18,18 +18,19 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textView;
+        private final TextView textView, icon;
 
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
-
+            icon = (TextView) view.findViewById(R.id.name_icon);
             textView = (TextView) view.findViewById(R.id.textView);
         }
 
         public TextView getTextView() {
             return textView;
         }
+        public TextView getIcon() { return icon; }
     }
     @NonNull
     @Override
@@ -43,6 +44,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ContactsAdapter.ViewHolder holder, int position) {
         holder.getTextView().setText(contacts.get(position).getName());
+        holder.getIcon().setText(contacts.get(position).getName().charAt(0) + "");
     }
 
     @Override

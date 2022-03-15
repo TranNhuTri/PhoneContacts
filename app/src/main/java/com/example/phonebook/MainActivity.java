@@ -2,12 +2,15 @@ package com.example.phonebook;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.phonebook.databinding.ActivityMainBinding;
@@ -65,6 +68,35 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, REQ_CODE);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        MenuItem menuItem = menu.findItem(R.id.search_contact);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setQueryHint("Search contact");
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                AsyncTask.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        contacts.clear();
+                        contacts.addAll(contactDao.findByName("%" + s + "%"));
+                    }
+                });
+                contactsAdapter.notifyDataSetChanged();
+                return false;
+            }
+        });
+        return true;
     }
 
     @Override
