@@ -1,5 +1,6 @@
 package com.example.phonebook;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -15,11 +16,12 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
-    private ArrayList<Contact> contacts;
+    private ArrayList<Contact> contacts = new ArrayList<>();;
     private ContactsAdapter contactsAdapter;
 
     private AppDatabase appDatabase;
     private ContactDao contactDao;
+    private static final int REQ_CODE = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +41,15 @@ public class MainActivity extends AppCompatActivity {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                contacts = new ArrayList<>();
+                for (Contact i: contactDao.getAll()) {
+                    contactDao.delete(i);
+                }
 
-                if(contactDao.getAll().size() == 0) {
+                if(contactDao.getAll() == null || contactDao.getAll().size() == 0) {
                     Contact contact = new Contact("Tran Nhu Tri", "0397405424", "trannhutri0703@gmail.com");
                     contactDao.insertAll(contact);
                 }
+
                 contacts.addAll(contactDao.getAll());
             }
         });
@@ -57,8 +62,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddContactActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQ_CODE);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode,
+                                    int resultCode, @Nullable Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode == REQ_CODE) {
+            AsyncTask.execute(new Runnable() {
+                @Override
+                public void run() {
+                    contacts.clear();
+                    contacts.addAll(contactDao.getAll());
+                }
+            });
+            contactsAdapter.notifyDataSetChanged();
+        }
     }
 }
