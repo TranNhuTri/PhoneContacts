@@ -4,19 +4,32 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity
-public class Contact {
+public class Contact implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
+
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    private byte[] avatar;
+
     @ColumnInfo
-    private String name;
+    private String first_name;
+
+    @ColumnInfo
+    private String last_name;
+
     @ColumnInfo
     private String mobile;
+
     @ColumnInfo
     private String email;
 
-    public Contact(String name, String mobile, String email) {
-        this.name = name;
+    public Contact(byte[] avatar, String first_name, String last_name, String mobile, String email) {
+        this.avatar = avatar;
+        this.first_name = first_name;
+        this.last_name = last_name;
         this.mobile = mobile;
         this.email = email;
     }
@@ -29,12 +42,28 @@ public class Contact {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public byte[] getAvatar() {
+        return avatar;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getFirst_name() {
+        return first_name;
+    }
+
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public String getMobile() {
@@ -51,5 +80,9 @@ public class Contact {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getName() {
+        return this.last_name + " " + this.first_name;
     }
 }

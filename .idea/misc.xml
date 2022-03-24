@@ -3,6 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/PhoneContacts/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.1" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/PhoneContacts/app/src/main/res/drawable/ic_baseline_person.xml" value="0.1" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/PhoneContacts/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/PhoneContacts/app/src/main/res/drawable/ic_baseline_phone_24.xml" value="0.1" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/PhoneContacts/app/src/main/res/drawable/ic_baseline_phone_iphone_24.xml" value="0.1" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/PhoneContacts/app/src/main/res/drawable/ic_baseline_photo_camera_24.xml" value="0.1" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/PhoneContacts/app/src/main/res/layout/activity_add_contact.xml" value="0.3625" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/PhoneContacts/app/src/main/res/layout/activity_add_edit_contact.xml" value="0.26992753623188404" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/PhoneContacts/app/src/main/res/layout/activity_contact_detail.xml" value="0.3242753623188406" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/PhoneContacts/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/PhoneContacts/app/src/main/res/layout/contact_item.xml" value="0.3625" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/PhoneContacts/app/src/main/res/menu/add_contact_menu.xml" value="0.3625" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/PhoneContacts/app/src/main/res/menu/contact_detail_menu.xml" value="0.3625" />
+        <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/PhoneContacts/app/src/main/res/menu/main_menu.xml" value="0.3625" />
         <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/phonebook/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2295" />
         <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/phonebook/app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.2315" />
         <entry key="..\:/Tai lieu BK/Hoc ki 6/Lap trinh di dong/Project/phonebook/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.261" />

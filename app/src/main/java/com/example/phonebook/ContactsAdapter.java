@@ -10,11 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHolder> {
-    private ArrayList<Contact> contacts;
+public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHolder>{
+    public interface ItemClickListener {
+        void onItemClick(Contact item);
+    }
 
-    public ContactsAdapter(ArrayList<Contact> contacts) {
+    private ArrayList<Contact> contacts;
+    private ItemClickListener listener;
+
+    public ContactsAdapter(ArrayList<Contact> contacts, ItemClickListener itemClickListener) {
         this.contacts = contacts;
+        this.listener = itemClickListener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -31,20 +37,28 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ViewHo
             return textView;
         }
         public TextView getIcon() { return icon; }
+
+        public void bind(final Contact item, final ItemClickListener listener) {
+            getTextView().setText(item.getName());
+            getIcon().setText(item.getName().charAt(0) + "");
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
+        }
     }
     @NonNull
     @Override
     public ContactsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.contact_item, parent, false);
-
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ContactsAdapter.ViewHolder holder, int position) {
-        holder.getTextView().setText(contacts.get(position).getName());
-        holder.getIcon().setText(contacts.get(position).getName().charAt(0) + "");
+        holder.bind(contacts.get(position), listener);
     }
 
     @Override

@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
 
 import com.example.phonebook.databinding.ActivityMainBinding;
 
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppDatabase appDatabase;
     private ContactDao contactDao;
-    private static final int REQ_CODE = 123;
+    private static final int REQ_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if(contactDao.getAll() == null || contactDao.getAll().size() == 0) {
-                    Contact contact = new Contact("Tran Nhu Tri", "0397405424", "trannhutri0703@gmail.com");
+                    Contact contact = new Contact(null, "Nhu Tri", "Tran", "0397405424", "trannhutri0703@gmail.com");
                     contactDao.insertAll(contact);
                 }
 
@@ -57,14 +57,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        contactsAdapter = new ContactsAdapter(contacts);
+        contactsAdapter = new ContactsAdapter(contacts, new ContactsAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(Contact item) {
+                Intent intent = new Intent(MainActivity.this, ContactDetail.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("contact", item);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, REQ_CODE);
+            }
+        });
         binding.rvContacts.setAdapter(contactsAdapter);
         binding.rvContacts.setLayoutManager(new LinearLayoutManager(this));
 
         binding.addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AddContactActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddEditContactActivity.class);
                 startActivityForResult(intent, REQ_CODE);
             }
         });
@@ -107,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
             AsyncTask.execute(new Runnable() {
                 @Override
                 public void run() {
+                    int id = intent != null ? intent.getIntExtra("id", 0) : 0;
+                    if(id != 0) {
+                        contactDao.delete(contactDao.loadAllById(id));
+                    }
                     contacts.clear();
                     contacts.addAll(contactDao.getAll());
                 }
